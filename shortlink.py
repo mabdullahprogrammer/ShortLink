@@ -32,11 +32,13 @@ except ImportError:
     print('\033[1;95mInstalling a Package...')
     subprocess.getoutput('pip3 install pyshorteners')
 
-def clear():
-    if "win" in os.environ:
-        os.system('cls')
-    else:
-        os.system("clear")
+
+clear = subprocess.getoutput("clear")
+if """is not recognized as an internal or external command,
+operable program or batch file.""" in clear:
+    os.system("cls")
+else:
+    os.system("clear")
 
 def banner():
     bnr = ["""  
@@ -124,10 +126,14 @@ def Func(args):
         main()
 
 if __name__ == '__main__':
-    clear()
     banner()
     parser = argparse.ArgumentParser()
     parser.add_argument('-m', '--m', type=str, help="Tells the mode 's:Start' or 'o:Open' to the Program.")
     parser.add_argument('-l', '--l', type=str, help="Type Your Link Here.")
     args = parser.parse_args()
     sys.stdout.write(str(Func(args)))
+
+
+
+
+
