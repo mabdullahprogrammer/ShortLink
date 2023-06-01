@@ -6,7 +6,7 @@
   <img src="https://img.shields.io/github/forks/Muhammad-Abdullah-Programmer/ShortLink?color=cyan&style=for-the-badge&color=purple">
   <img src="https://img.shields.io/github/watchers/Muhammad-Abdullah-Programmer/ShortLink?color=cyan&style=for-the-badge&color=purple">
   <img src="https://img.shields.io/github/issues/Muhammad-Abdullah-Programmer/ShortLink?color=red&style=for-the-badge">
-  <img src="https://img.shields.io/github/license/Muhammad-Abdullah-Programmer/ShortLink?style=for-the-badge&color=blue">
+  <img src="https://img.shields.io/badge/LICENSE-MIT-purple?style=for-the-badge&color=blue">
   <img src="https://hits.dwyl.com/Muhammad-Abdullah-Programmer/ShortLink.svg" width="140" height="28">
 <br>
 <br>
