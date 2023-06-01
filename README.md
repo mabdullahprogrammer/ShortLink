@@ -2,8 +2,8 @@
 
 <p align="center">
   <img src="https://img.shields.io/badge/Version-2.1-green?style=for-the-badge">
-  <img src="https://img.shields.io/github/stars/KasRoudra/pyphisher?style=for-the-badge&color=orange">
-  <img src="https://img.shields.io/github/forks/KasRoudra/pyphisher?color=cyan&style=for-the-badge&color=purple">
+  <img src="https://img.shields.io/github/stars/Muhammad-Abdullah-Programmer/ShortLink?style=for-the-badge&color=orange">
+  <img src="https://img.shields.io/github/forks/Muhammad-Abdullah-Programmer/ShortLink?color=cyan&style=for-the-badge&color=purple">
   <img src="https://img.shields.io/github/watchers/Muhammad-Abdullah-Programmer/ShortLink?color=cyan&style=for-the-badge&color=purple">
   <img src="https://img.shields.io/github/issues/Muhammad-Abdullah-Programmer/ShortLink?color=red&style=for-the-badge">
   <img src="https://img.shields.io/github/license/Muhammad-Abdullah-Programmer/ShortLink?style=for-the-badge&color=blue">
