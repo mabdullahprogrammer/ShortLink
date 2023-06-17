@@ -67,7 +67,7 @@ automatically.
 
 #### Or, directly run
 ```
-wget https://raw.githubusercontent.com/Muhammad-Abdullah-Programmer/main/shortlink.py && python3 shortlink.py
+wget https://raw.githubusercontent.com/Muhammad-Abdullah-Programmer/ShortLink/main/shortlink.py && python3 shortlink.py
 
 ```
 
