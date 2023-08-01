@@ -32,9 +32,9 @@ automatically.
   -----------|----------------|-------------------------------------
   NOW        |         2.1    | Opener Issue For Linux Will Be Fixed
   22,july-23 |         2.4    | Link History Saving
-  34,Dec-23  |         2.6    | Password Encrypted and Wrog Photo Saver
+  30,Dec-23  |         2.6    | Password Encrypted and Wrog Photo Saver
   23,Jan-24  |         2.8    | More Paths (e.g bitly.com, bg.rc, etc)
-  22,july-23 |         3      | Voice Encrypted & Wrong Voice Saver
+  22,july-24 |         3      | Voice Encrypted & Wrong Voice Saver
   -----------|----------------|-------------------------------------
 
 
