@@ -237,8 +237,8 @@ def main():
             shorten(l)
         elif o == '2':
             l = input(f'{drkclr.bwhite}Enter The Link To Open:{lgtclr.bpurple} ')
-            save_history(f'Link Opened: {l}')
             openlink(l)
+            save_history(f'Link Opened: {l}')
         elif o == '3':
             update()
         elif o == '4':
