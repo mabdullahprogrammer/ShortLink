@@ -29,23 +29,27 @@ try:
     import subprocess
 except ImportError:
     os.system('pip3 install subprocess')
+    import subprocess
 try:
     from intents import day, month, year, ver
     from replace import replace
     from colors import lgtclr, no_clr, bg, drkclr
-except Exception:
+except ImportError:
     print(f"File Not Found!")
     print(f"Installing Files...")
-    try:
-        subprocess.getoutput(
-            'sudo apt install https://github.com/Muhammad-Abdullah-Programmer/ShortLink/blob/main/colors.py')
-        subprocess.getoutput(
-            'sudo apt install https://github.com/Muhammad-Abdullah-Programmer/ShortLink/blob/main/intents.py')
-        subprocess.getoutput(
-            'sudo apt install https://github.com/Muhammad-Abdullah-Programmer/ShortLink/blob/main/replace.py')
-    except Exception:
-        print(f"Your OS is not supported please install files manually from github!");quit()
+    out1 = subprocess.getoutput(
+        'sudo apt install https://github.com/Muhammad-Abdullah-Programmer/ShortLink/blob/main/colors.py')
+    out2 = subprocess.getoutput(
+        'sudo apt install https://github.com/Muhammad-Abdullah-Programmer/ShortLink/blob/main/intents.py')
+    out3 = subprocess.getoutput(
+        'sudo apt install https://github.com/Muhammad-Abdullah-Programmer/ShortLink/blob/main/replace.py')
+    if "is not" in out1 and "is not" in out2 and "is not" in out3:
+        print(f"Your OS is not supported please install files manually from github!")
+        quit()
     else:
+        from intents import day, month, year, ver
+        from replace import replace
+        from colors import lgtclr, no_clr, bg, drkclr
         print(f'Package Installed Successfully!')
     time.sleep(1)
 
@@ -54,6 +58,7 @@ try:
 except ImportError:
     print(f'{lgtclr.bpurple}Installing a Package...')
     subprocess.getoutput('pip3 install pyshorteners')
+    import pyshorteners
     print(f'{lgtclr.bpurple}Package Installed Successfully!')
 
 if day >= 22 and month == 7 and year == 23 and ver <= 2.1:
@@ -73,15 +78,14 @@ else:
 
 
 def clear():
-    clear = subprocess.getoutput("clear")
-    if "is not recognized as" in clear:
+    cls = subprocess.getoutput("clear")
+    if "is not recognized as" in cls:
         os.system("cls")
     else:
         os.system("clear")
 
+
 clear()
-
-
 def banner():
     bnr = ["""  
  █████████  █████                          █████    █████        ███             █████     
@@ -123,25 +127,23 @@ Y88b  d88P 888  888 Y88..88P 888     Y88b.  888      888 888  888 888 "88b
     bnr = random.choice(bnr)
     print(f"{lgtclr.bpurple}" + bnr)
     print(f"""{lgtclr.bwhite}         
-            Author: {lgtclr.bcyan}Muhammad Abdulah              {lgtclr.bwhite}  Github: {lgtclr.bcyan}https://Muhammad-Abdullah-Programmer
-            {lgtclr.bwhite}Project: {lgtclr.bcyan}ShortLink           {lgtclr.bwhite}           Programmed In: {lgtclr.bcyan}Python 3.10.8
+            Author: {lgtclr.bcyan}Muhammad Abdulah     {lgtclr.bwhite}  Github: {lgtclr.bcyan}https://github.com/Muhammad-Abdullah-Programmer {lgtclr.bwhite}
+            Project: {lgtclr.bcyan}ShortLink           {lgtclr.bwhite}  Programmed In: {lgtclr.bcyan}Python 3.10.8 
             {lgtclr.bwhite}Date: {lgtclr.bcyan}{day}                       {lgtclr.bwhite} Version: {lgtclr.bcyan}{ver}
             """)
 
-sl = ""
+
 def shorten(link):
     exep = False
     try:
-        response = requests.get(link)
+        requests.get(link)
     except Exception:
         print(f'{lgtclr.bred}No Network Connection or Invalid URL!')
         exep = True
-    if exep == False:
+    if not exep:
         s = pyshorteners.Shortener()
-        slink = s.tinyurl.short(link)
-        sl = slink
         print(f"{lgtclr.bcyan}Your Link: {lgtclr.bblue}", end='')
-        print(slink, f'{no_clr}')
+        print(s.tinyurl.short(link), f'{no_clr}')
     else:
         pass
     time.sleep(3)
@@ -204,8 +206,10 @@ def update():
     time.sleep(1)
 
 def openlink(link):
+    if not link.startswith('http://') or not link.startswith('https://'):
+        link = "https://" + link
     linked = link.replace('http://', '')
-    linked = link.replace('https://', '')
+    linked = linked.replace('https://', '')
     a = subprocess.getoutput(f'ping {linked}')
     if "Ping request could not find" in a:
 
@@ -227,26 +231,23 @@ def main():
         print(f'{lgtclr.bwhite}1.{lgtclr.byellow} Shorten')
         print(f'{lgtclr.bwhite}2.{lgtclr.byellow} Open')
         print(f'{lgtclr.bwhite}3.{lgtclr.byellow} Update')
-        print(f'{lgtclr.bwhite}4.{lgtclr.byellow} Show History')
         print()
         o = input(f"{lgtclr.bgreen}Enter Option: ")
         print("")
         if o == '1':
-            l = input(f'{drkclr.bwhite}Enter The Link To Shorten:{lgtclr.bpurple} ')
-            save_history(f'Link Shortened from: {l} to {sl}')
-            shorten(l)
+            link = input(f'{drkclr.bwhite}Enter The Link To Shorten:{lgtclr.bpurple} ')
+            shorten(link)
         elif o == '2':
-            l = input(f'{drkclr.bwhite}Enter The Link To Open:{lgtclr.bpurple} ')
-            save_history(f'Link Opened: {l}')
-            openlink(l)
+            link = input(f'{drkclr.bwhite}Enter The Link To Open:{lgtclr.bpurple} ')
+            openlink(link)
         elif o == '3':
             update()
         elif o == '4':
             show_history()
             input()  # Click any key to continue
         else:
-                print(f"{lgtclr.red}Invalid Option!")
-                time.sleep(1)
+            print(f"{lgtclr.red}Invalid Option!")
+            time.sleep(1)
         main()
     except KeyboardInterrupt:
         print(f"{lgtclr.bpurple}Thanks For Visiting.\nBye!{no_clr}")
@@ -270,12 +271,6 @@ def Func(args):
     elif args.l and args.m == "s":
         banner()
         shorten(args.l)
-    elif args.m == "u":
-        banner()
-        update()
-    elif args.m == "h":
-        banner()
-        show_history()
     elif args.m and not args.l:
         print(f'\033[93mPlease Type The Link \033[31m(-l){no_clr}')
     else:
@@ -287,5 +282,5 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument('-m', '--m', type=str, help="Tells the mode 's:Start' or 'o:Open' to the Program.")
     parser.add_argument('-l', '--l', type=str, help="Type Your Link Here.")
-    args = parser.parse_args()
-    sys.stdout.write(str(Func(args)))
+    arguments = parser.parse_args()
+    sys.stdout.write(str(Func(arguments)))
