@@ -249,7 +249,7 @@ def main():
                 time.sleep(1)
         main()
     except KeyboardInterrupt:
-        print(f"{lgtclr.bpurple}Thanks For Visiting.\nBye!{no_clr}")
+        print(f"\n{lgtclr.bpurple}Thanks For Visiting.\nBye!{no_clr}")
         quit()
 
 def save_history(link):
