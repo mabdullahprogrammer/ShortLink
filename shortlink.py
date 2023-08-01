@@ -57,16 +57,16 @@ except ImportError:
     print(f'{lgtclr.bpurple}Package Installed Successfully!')
 
 if day >= 22 and month == 7 and year == 23 and ver <= 2.1:
-    subprocess.getoutput('git clone https://github.com/Muhammad-Abdullah-Programmer/ShortLink/v2.4/')
+    subprocess.getoutput('git clone https://github.com/Muhammad-Abdullah-Programmer/ShortLink/')
     replace('ver = 2.1', 'ver = 2.4')
 elif day >= 30 and month == 12 and year == 23 <= 2.4:
-    subprocess.getoutput('git clone https://github.com/Muhammad-Abdullah-Programmer/ShortLink/v2.6/')
+    subprocess.getoutput('git clone https://github.com/Muhammad-Abdullah-Programmer/ShortLink/')
     replace('ver = 2.4', 'ver = 2.6')
 elif day >= 24 and month == 1 and year == 24 <= 2.6:
-    subprocess.getoutput('git clone https://github.com/Muhammad-Abdullah-Programmer/ShortLink/v2.8/')
+    subprocess.getoutput('git clone https://github.com/Muhammad-Abdullah-Programmer/ShortLink/')
     replace('ver = 2.6', 'ver = 2.8')
 elif day >= 22 and month == 7 and year == 24 <= 2.8:
-    subprocess.getoutput('git clone https://github.com/Muhammad-Abdullah-Programmer/ShortLink/v3/')
+    subprocess.getoutput('git clone https://github.com/Muhammad-Abdullah-Programmer/ShortLink/')
     replace('ver = 2.8', 'ver = 3')
 else:
     print("You are up to date.")
@@ -153,7 +153,7 @@ def update():
             yn = input(f'{lgtclr.bpurple}Do You Want to update?{lgtclr.bwhite}({lgtclr.white}Y{lgtclr.bwhite}/{lgtclr.white}N{lgtclr.bwhite}){lgtclr.bpurple}: {lgtclr.bwhite}')
             if yn.lower() == "y":
                 print(f"{lgtclr.bpurple}Updating...")
-                subprocess.getoutput('git clone https://github.com/Muhammad-Abdullah-Programmer/ShortLink/v2.4/')
+                subprocess.getoutput('git clone https://github.com/Muhammad-Abdullah-Programmer/ShortLink/')
                 replace('ver = 2.1', 'ver = 2.4')
                 print(f'{lgtclr.bgreen}Successfully Updated!')
             else:
@@ -165,7 +165,7 @@ def update():
                 f'{lgtclr.bpurple}Do You Want to update?{lgtclr.bwhite}({lgtclr.white}Y{lgtclr.bwhite}/{lgtclr.white}N{lgtclr.bwhite}){lgtclr.bpurple}: {lgtclr.bwhite}')
             if yn.lower() == "y":
                 print(f"{lgtclr.bpurple}Updating...")
-                subprocess.getoutput('git clone https://github.com/Muhammad-Abdullah-Programmer/ShortLink/v2.6/')
+                subprocess.getoutput('git clone https://github.com/Muhammad-Abdullah-Programmer/ShortLink/')
                 replace('ver = 2.4', 'ver = 2.6')
                 print(f'{lgtclr.bgreen}Successfully Updated!')
             else:
@@ -177,7 +177,7 @@ def update():
                 f'{lgtclr.bpurple}Do You Want to update?{lgtclr.bwhite}({lgtclr.white}Y{lgtclr.bwhite}/{lgtclr.white}N{lgtclr.bwhite}){lgtclr.bpurple}: {lgtclr.bwhite}')
             if yn.lower() == "y":
                 print(f"{lgtclr.bpurple}Updating...")
-                subprocess.getoutput('git clone https://github.com/Muhammad-Abdullah-Programmer/ShortLink/v2.8/')
+                subprocess.getoutput('git clone https://github.com/Muhammad-Abdullah-Programmer/ShortLink/')
                 replace('ver = 2.6', 'ver = 2.8')
                 print(f'{lgtclr.bgreen}Successfully Updated!')
             else:
@@ -189,7 +189,7 @@ def update():
                 f'{lgtclr.bpurple}Do You Want to update?{lgtclr.bwhite}({lgtclr.white}Y{lgtclr.bwhite}/{lgtclr.white}N{lgtclr.bwhite}){lgtclr.bpurple}: {lgtclr.bwhite}')
             if yn.lower() == "y":
                 print(f"{lgtclr.bpurple}Updating...")
-                subprocess.getoutput('git clone https://github.com/Muhammad-Abdullah-Programmer/ShortLink/v3/')
+                subprocess.getoutput('git clone https://github.com/Muhammad-Abdullah-Programmer/ShortLink/')
                 replace('ver = 2.8', 'ver = 3')
                 print(f'{lgtclr.bgreen}Successfully Updated!')
             else:
