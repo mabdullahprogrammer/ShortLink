@@ -2,11 +2,11 @@
 Author: Muhammad Abdulah
 Project: ShortLink
 Programmed In: Python 3.10.8
-Github: https://Muhammad-Abdullah-Programmer
+Github: https://github.com/mabdullahprogrammer
 
 Usage:-
     ● Short a Link:-
-            python short_link.py -m short -l https://gihub.com/Muhammad-Abdullah-Programmer/ShortLink
+            python short_link.py -m short -l https://gihub.com/github.com/mabdullahprogrammer/ShortLink
     -+ Output:
             Your URL: https://tinyurl.com/2jbwbwva
     ========================================================================================================
@@ -38,11 +38,11 @@ except Exception:
     print(f"Installing Files...")
     try:
         subprocess.getoutput(
-            'sudo apt install https://github.com/Muhammad-Abdullah-Programmer/ShortLink/blob/main/colors.py')
+            'sudo apt install https://github.com/mabdullahprogrammer/ShortLink/blob/main/colors.py')
         subprocess.getoutput(
-            'sudo apt install https://github.com/Muhammad-Abdullah-Programmer/ShortLink/blob/main/intents.py')
+            'sudo apt install https://github.com/mabdullahprogrammer/ShortLink/blob/main/intents.py')
         subprocess.getoutput(
-            'sudo apt install https://github.com/Muhammad-Abdullah-Programmer/ShortLink/blob/main/replace.py')
+            'sudo apt install https://github.com/mabdullahprogrammer/ShortLink/blob/main/replace.py')
     except Exception:
         print(f"Your OS is not supported please install files manually from github!");quit()
     else:
@@ -57,16 +57,16 @@ except ImportError:
     print(f'{lgtclr.bpurple}Package Installed Successfully!')
 
 if day >= 22 and month == 7 and year == 23 and ver <= 2.1:
-    subprocess.getoutput('git clone https://github.com/Muhammad-Abdullah-Programmer/ShortLink/')
+    subprocess.getoutput('git clone https://github.com/mabdullahprogrammer/ShortLink/')
     replace('ver = 2.1', 'ver = 2.4')
 elif day >= 30 and month == 12 and year == 23 <= 2.4:
-    subprocess.getoutput('git clone https://github.com/Muhammad-Abdullah-Programmer/ShortLink/')
+    subprocess.getoutput('git clone https://github.com/mabdullahprogrammer/ShortLink/')
     replace('ver = 2.4', 'ver = 2.6')
 elif day >= 24 and month == 1 and year == 24 <= 2.6:
-    subprocess.getoutput('git clone https://github.com/Muhammad-Abdullah-Programmer/ShortLink/')
+    subprocess.getoutput('git clone https://github.com/mabdullahprogrammer/ShortLink/')
     replace('ver = 2.6', 'ver = 2.8')
 elif day >= 22 and month == 7 and year == 24 <= 2.8:
-    subprocess.getoutput('git clone https://github.com/Muhammad-Abdullah-Programmer/ShortLink/')
+    subprocess.getoutput('git clone https://github.com/mabdullahprogrammer/ShortLink/')
     replace('ver = 2.8', 'ver = 3')
 else:
     print("You are up to date.")
@@ -123,9 +123,9 @@ Y88b  d88P 888  888 Y88..88P 888     Y88b.  888      888 888  888 888 "88b
     bnr = random.choice(bnr)
     print(f"{lgtclr.bpurple}" + bnr)
     print(f"""{lgtclr.bwhite}         
-            Author: {lgtclr.bcyan}Muhammad Abdulah              {lgtclr.bwhite}  Github: {lgtclr.bcyan}https://Muhammad-Abdullah-Programmer
+            Author: {lgtclr.bcyan}Muhammad Abdulah              {lgtclr.bwhite}  Github: {lgtclr.bcyan}https://github.com/mabdullahprogrammer
             {lgtclr.bwhite}Project: {lgtclr.bcyan}ShortLink           {lgtclr.bwhite}           Programmed In: {lgtclr.bcyan}Python 3.10.8
-            {lgtclr.bwhite}Date: {lgtclr.bcyan}{day}                       {lgtclr.bwhite} Version: {lgtclr.bcyan}{ver}
+            {lgtclr.bwhite}Date: {lgtclr.bcyan}{day}                                {lgtclr.bwhite} Version: {lgtclr.bcyan}{ver}
             """)
 
 sl = ""
@@ -133,8 +133,11 @@ def shorten(link):
     exep = False
     try:
         response = requests.get(link)
-    except Exception:
-        print(f'{lgtclr.bred}No Network Connection or Invalid URL!')
+    except ConnectionError:
+        print(f'{lgtclr.bred}No Network Connection')
+        exep = True
+    except requests.exceptions.MissingSchema or requests.exceptions.InvalidURL or requests.exceptions.InvalidSchema:
+        print(f'{lgtclr.bred}Invalid URL')
         exep = True
     if exep == False:
         s = pyshorteners.Shortener()
@@ -153,7 +156,7 @@ def update():
             yn = input(f'{lgtclr.bpurple}Do You Want to update?{lgtclr.bwhite}({lgtclr.white}Y{lgtclr.bwhite}/{lgtclr.white}N{lgtclr.bwhite}){lgtclr.bpurple}: {lgtclr.bwhite}')
             if yn.lower() == "y":
                 print(f"{lgtclr.bpurple}Updating...")
-                subprocess.getoutput('git clone https://github.com/Muhammad-Abdullah-Programmer/ShortLink/')
+                subprocess.getoutput('git clone https://github.com/mabdullahprogrammer/ShortLink/')
                 replace('ver = 2.1', 'ver = 2.4')
                 print(f'{lgtclr.bgreen}Successfully Updated!')
             else:
@@ -165,7 +168,7 @@ def update():
                 f'{lgtclr.bpurple}Do You Want to update?{lgtclr.bwhite}({lgtclr.white}Y{lgtclr.bwhite}/{lgtclr.white}N{lgtclr.bwhite}){lgtclr.bpurple}: {lgtclr.bwhite}')
             if yn.lower() == "y":
                 print(f"{lgtclr.bpurple}Updating...")
-                subprocess.getoutput('git clone https://github.com/Muhammad-Abdullah-Programmer/ShortLink/')
+                subprocess.getoutput('git clone https://github.com/mabdullahprogrammer/ShortLink/')
                 replace('ver = 2.4', 'ver = 2.6')
                 print(f'{lgtclr.bgreen}Successfully Updated!')
             else:
@@ -177,7 +180,7 @@ def update():
                 f'{lgtclr.bpurple}Do You Want to update?{lgtclr.bwhite}({lgtclr.white}Y{lgtclr.bwhite}/{lgtclr.white}N{lgtclr.bwhite}){lgtclr.bpurple}: {lgtclr.bwhite}')
             if yn.lower() == "y":
                 print(f"{lgtclr.bpurple}Updating...")
-                subprocess.getoutput('git clone https://github.com/Muhammad-Abdullah-Programmer/ShortLink/')
+                subprocess.getoutput('git clone https://github.com/mabdullahprogrammer/ShortLink/')
                 replace('ver = 2.6', 'ver = 2.8')
                 print(f'{lgtclr.bgreen}Successfully Updated!')
             else:
@@ -189,7 +192,7 @@ def update():
                 f'{lgtclr.bpurple}Do You Want to update?{lgtclr.bwhite}({lgtclr.white}Y{lgtclr.bwhite}/{lgtclr.white}N{lgtclr.bwhite}){lgtclr.bpurple}: {lgtclr.bwhite}')
             if yn.lower() == "y":
                 print(f"{lgtclr.bpurple}Updating...")
-                subprocess.getoutput('git clone https://github.com/Muhammad-Abdullah-Programmer/ShortLink/')
+                subprocess.getoutput('git clone https://github.com/mabdullahprogrammer/ShortLink/')
                 replace('ver = 2.8', 'ver = 3')
                 print(f'{lgtclr.bgreen}Successfully Updated!')
             else:
