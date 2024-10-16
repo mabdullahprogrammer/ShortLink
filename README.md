@@ -128,7 +128,7 @@ options:
 1. Run the script
 2. Choose a Option
 3. Provide The Info
-4. No Fun
+4. Now Fun
 
 <h1 align="center">Example</h1>
 
