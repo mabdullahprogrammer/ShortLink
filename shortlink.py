@@ -19,62 +19,72 @@ Usage:-
 # Required Imports
 
 import argparse
+import json
 import random
 import os
 import sys
 import time
-import requests
+import datetime
 
-try:
-    import subprocess
-except ImportError:
-    os.system('pip3 install subprocess')
-try:
-    from intents import day, month, year, ver
-    from replace import replace
-    from colors import lgtclr, no_clr, bg, drkclr
-except Exception:
-    print(f"File Not Found!")
-    print(f"Installing Files...")
+day = int(datetime.datetime.now().strftime("%d"))
+month = int(datetime.datetime.now().strftime("%m"))
+year = int(datetime.datetime.now().strftime("%y"))
+
+with open('config.json', 'r') as file:
+    # Load the JSON content
+    data = json.load(file)
+
+ver = data['version']
+
+
+def verify_pkgs():
+    files = os.listdir()
+    if 'colors.py' not in files:
+        print(f'Config file not installed!')
+        with open('config.json', 'w') as colf:
+            data = requests.get(
+                'https://raw.githubusercontent.com/mabdullahprogrammer/ShortLink/refs/heads/main/config.json').content
+            colf.write(data)
+    if 'colors.py' not in files:
+        print(f'Colors file not installed!')
+        with open('colors.py', 'w') as colf:
+            data = requests.get(
+                'https://raw.githubusercontent.com/mabdullahprogrammer/ShortLink/refs/heads/main/colors.py').content
+            colf.write(data)
+    if 'replace.py' not in files:
+        print(f'Colors file not installed!')
+        with open('replace.py', 'w') as colf:
+            data = requests.get(
+                'https://raw.githubusercontent.com/mabdullahprogrammer/ShortLink/refs/heads/main/replace.py').content
+            colf.write(data)
+
     try:
-        subprocess.getoutput(
-            'sudo apt install https://github.com/mabdullahprogrammer/ShortLink/blob/main/colors.py')
-        subprocess.getoutput(
-            'sudo apt install https://github.com/mabdullahprogrammer/ShortLink/blob/main/intents.py')
-        subprocess.getoutput(
-            'sudo apt install https://github.com/mabdullahprogrammer/ShortLink/blob/main/replace.py')
-    except Exception:
-        print(f"Your OS is not supported please install files manually from github!");quit()
-    else:
-        print(f'Package Installed Successfully!')
-    time.sleep(1)
+        import pyshorteners
+    except ImportError:
+        print('\033[0;92mA necessary Package is not installed. Wait while installing it...\033[1;91m', end='')
+        os.system('pip install pyshorteners')
+        print('Done')
 
-try:
-    import pyshorteners
-except ImportError:
-    print(f'{lgtclr.bpurple}Installing a Package...')
-    subprocess.getoutput('pip3 install pyshorteners')
-    print(f'{lgtclr.bpurple}Package Installed Successfully!')
+def check_conn():
+    try:
+        requests.get('https://google.com')
+    except:
+        print('\033[1;31mNo Internet!\033[00m');exit()
+        
+check_conn()
+verify_pkgs()
 
-if day >= 22 and month == 7 and year == 23 and ver <= 2.1:
-    subprocess.getoutput('git clone https://github.com/mabdullahprogrammer/ShortLink/')
-    replace('ver = 2.1', 'ver = 2.4')
-elif day >= 30 and month == 12 and year == 23 <= 2.4:
-    subprocess.getoutput('git clone https://github.com/mabdullahprogrammer/ShortLink/')
-    replace('ver = 2.4', 'ver = 2.6')
-elif day >= 24 and month == 1 and year == 24 <= 2.6:
-    subprocess.getoutput('git clone https://github.com/mabdullahprogrammer/ShortLink/')
-    replace('ver = 2.6', 'ver = 2.8')
-elif day >= 22 and month == 7 and year == 24 <= 2.8:
-    subprocess.getoutput('git clone https://github.com/mabdullahprogrammer/ShortLink/')
-    replace('ver = 2.8', 'ver = 3')
-else:
-    print("You are up to date.")
+from colors import *
+from replace import *
+import pyshorteners
 
 
+
+
+
+os_name = "windows" if 'nt' in os.name else os.name
 def clear():
-    clear = subprocess.getoutput("clear")
-    if "is not recognized as" in clear:
+    if os_name == 'windows':
         os.system("cls")
     else:
         os.system("clear")
@@ -149,67 +159,66 @@ def shorten(link):
         pass
     time.sleep(3)
 
-def update():
-    if os.name != "nt":
-        if day >= 22 or month >= 7 and year == 23 and ver <= 2.1:
-            print(f"{lgtclr.byellow}There's a new update from {bg.lgtclr.bblue}{lgtclr.bwhite} {ver} {no_clr}{lgtclr.byellow}to{bg.lgtclr.bblue}{lgtclr.bwhite} 2.4 \033[00m")
-            yn = input(f'{lgtclr.bpurple}Do You Want to update?{lgtclr.bwhite}({lgtclr.white}Y{lgtclr.bwhite}/{lgtclr.white}N{lgtclr.bwhite}){lgtclr.bpurple}: {lgtclr.bwhite}')
-            if yn.lower() == "y":
-                print(f"{lgtclr.bpurple}Updating...")
-                subprocess.getoutput('git clone https://github.com/mabdullahprogrammer/ShortLink/')
-                replace('ver = 2.1', 'ver = 2.4')
-                print(f'{lgtclr.bgreen}Successfully Updated!')
-            else:
-                main()
-        elif day >= 30 or month >= 12 and year == 23 <= 2.4:
-            print(
-                f"{lgtclr.byellow}There's a new update from {bg.lgtclr.bblue}{lgtclr.bwhite} {ver} {no_clr}{lgtclr.byellow}to{bg.lgtclr.bblue}{lgtclr.bwhite} 2.6 \033[00m")
-            yn = input(
-                f'{lgtclr.bpurple}Do You Want to update?{lgtclr.bwhite}({lgtclr.white}Y{lgtclr.bwhite}/{lgtclr.white}N{lgtclr.bwhite}){lgtclr.bpurple}: {lgtclr.bwhite}')
-            if yn.lower() == "y":
-                print(f"{lgtclr.bpurple}Updating...")
-                subprocess.getoutput('git clone https://github.com/mabdullahprogrammer/ShortLink/')
-                replace('ver = 2.4', 'ver = 2.6')
-                print(f'{lgtclr.bgreen}Successfully Updated!')
-            else:
-                main()
-        elif day >= 24 or month >= 1 and year == 24 <= 2.6:
-            print(
-                f"{lgtclr.byellow}There's a new update from {bg.lgtclr.bblue}{lgtclr.bwhite} {ver} {no_clr}{lgtclr.byellow}to{bg.lgtclr.bblue}{lgtclr.bwhite} 2.8 \033[00m")
-            yn = input(
-                f'{lgtclr.bpurple}Do You Want to update?{lgtclr.bwhite}({lgtclr.white}Y{lgtclr.bwhite}/{lgtclr.white}N{lgtclr.bwhite}){lgtclr.bpurple}: {lgtclr.bwhite}')
-            if yn.lower() == "y":
-                print(f"{lgtclr.bpurple}Updating...")
-                subprocess.getoutput('git clone https://github.com/mabdullahprogrammer/ShortLink/')
-                replace('ver = 2.6', 'ver = 2.8')
-                print(f'{lgtclr.bgreen}Successfully Updated!')
-            else:
-                main()
-        elif day >= 22 or month >= 7 and year == 24 <= 2.8:
-            print(
-                f"{lgtclr.byellow}There's a new update from {bg.lgtclr.bblue}{lgtclr.bwhite} {ver} {no_clr}{lgtclr.byellow}to{bg.lgtclr.bblue}{lgtclr.bwhite} 3 \033[00m")
-            yn = input(
-                f'{lgtclr.bpurple}Do You Want to update?{lgtclr.bwhite}({lgtclr.white}Y{lgtclr.bwhite}/{lgtclr.white}N{lgtclr.bwhite}){lgtclr.bpurple}: {lgtclr.bwhite}')
-            if yn.lower() == "y":
-                print(f"{lgtclr.bpurple}Updating...")
-                subprocess.getoutput('git clone https://github.com/mabdullahprogrammer/ShortLink/')
-                replace('ver = 2.8', 'ver = 3')
-                print(f'{lgtclr.bgreen}Successfully Updated!')
-            else:
-                main()
-        else:
-            print(f'{lgtclr.bred}No New Updates Available or yo are up to date!\033[00m')
+import os
+import requests
+import zipfile
+import io
 
-        time.sleep(1)
-        main()
+
+def clone(username, repo_name, destination=None):
+    # Construct the URL for the zip file of the repository
+    repo_url = f"https://github.com/{username}/{repo_name}/archive/refs/heads/main.zip"
+
+    if destination is None:
+        destination = repo_name  # Default destination folder as repo_name
+
+    try:
+        print(f"Downloading {repo_url} ...")
+        # Send a GET request to download the repository as a zip file
+        response = requests.get(repo_url)
+
+        if response.status_code == 200:
+            print("Download successful, extracting...")
+            # Extract the downloaded zip file to the destination
+            with zipfile.ZipFile(io.BytesIO(response.content)) as z:
+                z.extractall(destination)
+            print(f"Repository cloned to '{destination}'")
+        else:
+            print(f"Failed to download repository: HTTP {response.status_code}")
+
+    except Exception as e:
+        print(f"An error occurred: {e}")
+
+
+def update():
+    data = requests.get('https://raw.githubusercontent.com/mabdullahprogrammer/ShortLink/refs/heads/main/config.json')
+    data = data.json()
+    new_ver = data['version']
+    if data['update'] and ver!=new_ver:
+        print(f"{lgtclr.byellow}There's a new update from {bg.lgtclr.bblue}{lgtclr.bwhite} {ver} {no_clr}{lgtclr.byellow}to{bg.lgtclr.bblue}{lgtclr.bwhite} {new_ver} \033[00m")
+        yn = input(f'{lgtclr.bpurple}Do You Want to update?{lgtclr.bwhite}({lgtclr.white}Y{lgtclr.bwhite}/{lgtclr.white}N{lgtclr.bwhite}){lgtclr.bpurple}: {lgtclr.bwhite}')
+        if yn.lower() == "y":
+            print(f"{lgtclr.bpurple}Updating...")
+            cwd = os.getcwd()
+            pwd = cwd.split('\\')
+            pwd.pop(-1)
+            pwd = '\\'.join(pwd)
+            clone('mabdullahprogrammer', 'ShortLink',f'{pwd}')
+            print(f'{lgtclr.bgreen}Successfully Updated!')
+            print(f'{lgtclr.yellow}Run the script again to apply updates. \n{lgtclr.bwhite}Also Remove Old Directory and rename Shortlink-main to ShortLink')
+            exit()
+        else:
+            main()
     else:
-        print(f'{lgtclr.red}Sorry cant Update because your OS is not supported')
+        print(f'{lgtclr.bred}No New Updates Available or yo are up to date!\033[00m')
+
     time.sleep(1)
+    main()
 
 def openlink(link):
     linked = link.replace('http://', '')
     linked = link.replace('https://', '')
-    a = subprocess.getoutput(f'ping {linked}')
+    a = os.system(f'ping {linked}')
     if "Ping request could not find" in a:
 
         print(
@@ -257,7 +266,7 @@ def main():
 
 def save_history(link):
     with open('link.history', 'a') as f:
-        f.write(link)
+        f.write(link+"\n")
         f.close()
 
 def show_history():
